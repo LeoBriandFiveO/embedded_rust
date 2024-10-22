@@ -70,7 +70,6 @@ fn main() -> ! {
         // Set up the system clock. We want to run at 8MHz for this one.
         let rcc = dp.RCC.constrain();
         let clocks = rcc.cfgr.use_hse(8.MHz()).freeze();
-        let mut delay = dp.TIM1.delay_ms(&clocks);
 
         // Create a delay abstraction based on SysTick
         let mut delay = cp.SYST.delay(&clocks);
