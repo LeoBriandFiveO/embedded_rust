@@ -40,7 +40,7 @@ mod app {
         // Sépare le registre GPIOC en différentes broches (pins) pour pouvoir les manipuler individuellement.
         let gpioc = dp.GPIOC.split();
 
-        let mut syscfg = dp.SYSCFG.constrain();
+        // let mut syscfg = dp.SYSCFG.constrain();
         let trigger_pin = gpioc.pc2.into_push_pull_output();
         let echo_pin = gpioc.pc3.into_pull_down_input();
 
@@ -116,7 +116,7 @@ mod app {
 
         // Calculer la distance
         rprintln!("Duration time : {}",echo_time);               
-        let distance_cm: f64 = (echo_time as f64 * 343.0) / 2.0 / 10_000.0;
+        let distance_cm = (echo_time as f64)*17.0/100.0;
         rprintln!("Distance : {}cm", distance_cm);
 
         let _ = timer.start(100.millis());
